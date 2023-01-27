@@ -38,5 +38,40 @@ productQueries.getImageById = async (id) => {
     conn && (await conn.end());
   }
 };
+productQueries.getProductById = async (id) => {
+  // Conectamos con la base de datos y buscamos si existe el producto por la ref.
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM productos WHERE id = ?",
+      id,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
+productQueries.getAllProduct = async () => {
+   // Conectamos con la base de datos y buscamos si existe el producto por la ref.
+   let conn = null;
+   try {
+     conn = await db.createConnection();
+     return await db.query(
+       "SELECT * FROM productos ",
+       [],
+
+       "select",
+       conn
+     );
+   } catch (e) {
+     throw new Error(e);
+   } finally {
+     conn && (await conn.end());
+   }
+}
 export default productQueries;

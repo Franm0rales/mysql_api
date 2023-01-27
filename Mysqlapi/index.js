@@ -6,7 +6,6 @@ import userRouter from "./routes/user_router.js";
 import cors from "cors";
 import productRouter from "./routes/product_routes.js";
 import fileUpload from "express-fileupload";
-
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 

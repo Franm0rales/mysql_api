@@ -1,4 +1,5 @@
 import userQueries from "./mysql_queries/user_queries.js";
+import productQueries from "./mysql_queries/product_queries.js";
 // import productQueries from "./mysql_queries/product_queries.js";
 const dao = {};
 
@@ -18,5 +19,10 @@ dao.updateUser = async (id, userData) =>
 dao.addImage = async (imageData) => await productQueries.addImage(imageData);
 // Obtener una imagen por su id
 dao.getImageById = async (id) => await productQueries.getImageById(id);
+// Buscar producto por id
+dao.getProductById = async (id) => await productQueries.getProductById(id);
+
+// traer todos los productos
+ dao.getAllProduct = async() => await productQueries.getAllProduct();
 
 export default dao;
