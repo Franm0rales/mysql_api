@@ -23,8 +23,8 @@ controller.addUser = async (req, res) => {
       from: '"Bienvenido a Canteen design" <picassomorales@gmail.com>', // sender address
       to: Email, // list of receivers
       subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
-      html: "<b>Bienvenido a Canteen design, gracias por registrarte</b>", // html body
+      // text: "Hello world?", // plain text body
+      html: '<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! http://127.0.0.1:5173/login</b>', // html body
     });
       return res.send(`Usuario ${Nombre} con id: ${addUser} registrado`);
   } catch (e) {
