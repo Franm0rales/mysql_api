@@ -55,7 +55,7 @@ controller.getImage = async (req, res) => {
 };
 
 controller.getProduct = async (req, res) => {
-  const { id} = req.body;
+  const id = req.params.id;
 // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
 if (!id)
   return res.status(400).send("Error al recibir el body");
@@ -66,10 +66,10 @@ try {
 
 
   // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
-  [product] = product;
+  // [product] = product;
 
   //Si todo es correcto enviamos la respuesta. 200 OK
-  return res.send({ product });
+  return res.send( product );
 } catch (e) {
   console.log(e.message);
 }}

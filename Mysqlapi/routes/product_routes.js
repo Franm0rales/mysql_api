@@ -8,7 +8,7 @@ productRouter.post("/upload", productController.uploadImage);
 // Obtener una imagen por su id
 productRouter.get("/image/:id", productController.getImage);
 // Buscar producto por su id
-productRouter.get("/getproduct", productController.getProduct);
+productRouter.get("/getproduct/:id", productController.getProduct);
 // traemos los productos
 productRouter.get("/", productController.allProduct)
 

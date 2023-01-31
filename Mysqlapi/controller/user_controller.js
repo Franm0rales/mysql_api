@@ -1,6 +1,7 @@
 import dao from "../services/dao.js";
 import { SignJWT, jwtVerify } from "jose";
 import md5 from "md5";
+import { transporter } from "../config/mailer.js";
 
 const controller = {};
 
@@ -11,12 +12,20 @@ controller.addUser = async (req, res) => {
     return res.status(400).send("Error al recibir el body");
   // Buscamos el usuario en la base de datos
   try {
+     
     const user = await dao.getUserByEmail(Email);
     // Si existe el usuario respondemos con un 409 (conflict)
     if (user.length > 0) return res.status(409).send("usuario ya registrado");
     // Si no existe lo registramos
     const addUser = await dao.addUser(req.body);
     if (addUser)
+    await transporter.sendMail({
+      from: '"Bienvenido a Canteen design" <picassomorales@gmail.com>', // sender address
+      to: Email, // list of receivers
+      subject: "Hello ✔", // Subject line
+      text: "Hello world?", // plain text body
+      html: "<b>Bienvenido a Canteen design, gracias por registrarte</b>", // html body
+    });
       return res.send(`Usuario ${Nombre} con id: ${addUser} registrado`);
   } catch (e) {
     console.log(e.message);
